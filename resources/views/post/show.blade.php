@@ -4,6 +4,11 @@
 <p>{{ $post->text }}</p>
 
 <p><a href="{{ action('PostController@edit', $post) }}">Labot šo ierakstu</a></p>
+<form action="/post/{{ $post->id }}" method="POST">
+    {{ csrf_field() }}
+    {{ method_field('DELETE') }}
+    <button>Dzēst šo ierakstu un komentārus</button>
+</form>
 
 <h1>Komentāri</h1>
 <ul>
