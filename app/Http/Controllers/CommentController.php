@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
@@ -39,6 +40,7 @@ class CommentController extends Controller
         $post = Post::findOrFail($postId);
 
         $comment = new Comment;
+        $comment->validate($request->all());
         $comment->email = $request->email;
         $comment->comment = $request->comment;
         $post->comments()->save($comment);
@@ -90,6 +92,9 @@ class CommentController extends Controller
     public function destroy($postId, $commentId)
     {
         $comment = Comment::findOrFail($commentId);
+        DB::table('blocked_emails')->insert(
+            ['email' => $comment->email]
+        );
         Comment::where('email', $comment->email)->delete();
         return redirect()->action('PostController@show', $postId);
     }

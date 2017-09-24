@@ -32,6 +32,16 @@
             </li>
         @endforeach
     </ul>
+
+    @if (count($errors) > 0)
+        <h2>Jūsu ievadītajos datos bija nepilnības</h2>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form action="{{ action('CommentController@store', $post) }}" method="post">
         <h2>Komentēt</h2>
         {{ csrf_field() }}
