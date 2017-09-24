@@ -15,7 +15,12 @@
     @foreach($post->comments as $comment)
         <li>
             Autors: {{ $comment->email }}
-            Datums: {{ $comment->created_at }}<br>
+            Datums: {{ $comment->created_at }}
+            <form action="/post/{{ $post->id }}/comment/{{ $comment->id }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button>Bloķēt šo personu</button>
+            </form>
             {{ $comment->comment }}
         </li>
     @endforeach
