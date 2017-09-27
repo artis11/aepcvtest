@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends BaseModel
 {
     protected $rules = array(
-        'title' => 'required|unique:posts',
+        'title' => 'required|unique:posts,title,{id}',
         'text' => 'required|max:255',
     );
 

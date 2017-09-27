@@ -18,19 +18,24 @@
     @endif
 
 
-    <form action="{{ action('PostController@update', $post) }}" method="post">
+    <form id="myForm" action="{{ action('PostController@update', $post) }}" method="post" @submit.prevent="onSubmitForm">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
         <p>
-            <label>Ieraksta virsraksts <input type="text" name="title" value="{{ old('title', $post->title) }}"></label>
+            <label>Ieraksta virsraksts <input id="input-title" type="text" name="title" value="{{ old('title', $post->title) }}"></label>
         </p>
         <p>
             <label>Ieraksta teksts
-                <textarea name="text">{{ old('text', $post->text) }}</textarea>
+                <textarea id="input-text" name="text">{{ old('text', $post->text) }}</textarea>
             </label>
         </p>
         <p><input type="submit" value="Izveidot"></p>
     </form>
+    <div v-cloak v-bind:class="{ 'text-danger': response.status == 422 }" v-if="response">
+        <div v-cloak>@{{ response.status }}</div>
+        <div>@{{ response.statusText }}</div>
+        <div>@{{ response.data }}</div>
+    </div>
 @stop
 
     

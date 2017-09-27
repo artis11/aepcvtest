@@ -20,8 +20,9 @@
             </div>
         </nav>
 
-        <div class="container" id="main">
+        <div class="container" id="app">
             @yield('content')
         </div>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

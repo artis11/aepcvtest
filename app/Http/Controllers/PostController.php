@@ -79,11 +79,11 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        $post->validate($request->all());
+        $post->validate($request->all(), $id);
         $post->title = $request->title;
         $post->text = $request->text;
         $post->save();
-        return redirect()->action('PostController@show', $post);
+        return "Ieraksts veiksmīgi saglabāts";
     }
 
     /**

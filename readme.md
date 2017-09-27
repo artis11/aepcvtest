@@ -1,3 +1,9 @@
+## Install after changes
+
+- php artisan migrate
+- npm install
+- gulp --production
+
 ## AE Partner Programmer Evaluation Project
 
 Hello, this is repository contains a sample Laravel 5.3 project, that is used
