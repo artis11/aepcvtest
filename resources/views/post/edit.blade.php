@@ -4,6 +4,10 @@
     Labot dienasgrāmatas ierakstu {{ $post->id }}
 @stop
 
+@section('js')
+    <script src="{{ asset('js/editPost.js') }}"></script>
+@stop
+
 @section('content')
     <h1>Ieraksta {{ $post->id }} labošana</h1>
 

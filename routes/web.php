@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::resource('post', 'PostController');
 Route::resource('post.comment', 'CommentController');
+Route::get('/statistic', 'StatisticController@index');
+Route::get('/statistic/data', 'StatisticController@data');

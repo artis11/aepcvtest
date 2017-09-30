@@ -1,6 +1,7 @@
 ## Install after changes
 
 - php artisan migrate
+- php artisan db:seed
 - npm install
 - gulp --production
 

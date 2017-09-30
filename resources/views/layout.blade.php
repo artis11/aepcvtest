@@ -1,3 +1,6 @@
+<?php
+    $controller = explode('@', class_basename(Route::currentRouteAction()))[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,19 +13,22 @@
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Blog</a>
-                </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/post/">Posts</a></li>
+                    <li class="{{ $controller ==  '' ? 'active' : ''  }}">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="{{ $controller ==  'PostController' ? 'active' : ''  }}">
+                        <a href="/post/">Posts</a>
+                    </li>
+                    <li class="{{ $controller ==  'StatisticController' ? 'active' : ''  }}">
+                        <a href="/statistic/">Statistic</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-
         <div class="container" id="app">
             @yield('content')
         </div>
-        <script src="{{ asset('js/app.js') }}"></script>
+        @yield('js')
     </body>
 </html>
