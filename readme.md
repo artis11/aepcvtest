@@ -5,6 +5,16 @@
 - npm install
 - gulp --production
 
+## Run in docker
+
+- sudo apt install docker.io
+- sudo apt install docker-compose
+- sudo chmod -R 777 storage
+- sudo chmod -R 777 bootstrap/cache
+- sudo chown www-data:www-data -R database
+- docker-compose up -d
+- localhost:8080
+
 ## AE Partner Programmer Evaluation Project
 
 Hello, this is repository contains a sample Laravel 5.3 project, that is used
